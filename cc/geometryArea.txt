@@ -1,0 +1,26 @@
+public class GeometryArea {
+    public static Double areaOfCircle(Double radius) {
+        if (radius == null || radius <= 0) {
+            throw new IllegalArgumentException('Radius must be positive');
+        }
+        return Math.PI * radius * radius;
+    }
+
+    public static Double areaOfRectangle(Double length, Double breadth) {
+        if (length == null || breadth == null || length <= 0 || breadth <= 0) {
+            throw new IllegalArgumentException('Length and breadth must be positive');
+        }
+        return length * breadth;
+    }
+
+    public static Double areaOfTriangle(Double base, Double height) {
+        if (base == null || height == null || base <= 0 || height <= 0) {
+            throw new IllegalArgumentException('Base and height must be positive');
+        }
+        return 0.5 * base * height;
+    }
+}
+
+//System.debug('Area of Circle: ' + GeometryArea.areaOfCircle(5));
+//System.debug('Area of Rectangle: ' + GeometryArea.areaOfRectangle(4, 6));
+//System.debug('Area of Triangle: ' + GeometryArea.areaOfTriangle(5, 3));

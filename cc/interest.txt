@@ -1,0 +1,18 @@
+public class InterestCalculator {
+    public static Double simpleInterest(Double principal, Double rate, Double t) {
+        if (principal == null || rate == null || t == null || principal < 0 || rate < 0 || t < 0) {
+            throw new IllegalArgumentException('Principal, rate, and time must be non-negative');
+        }
+        return (principal * rate * t) / 100;
+    }
+
+    public static Double compoundInterest(Double principal, Double rate, Double t) {
+        if (principal == null || rate == null || t == null || principal < 0 || rate < 0 || t < 0) {
+            throw new IllegalArgumentException('Principal, rate, and time must be non-negative');
+        }
+        return principal * Math.pow((1 + rate / 100), t) - principal;
+    }
+}
+
+//System.debug('Simple Interest: ' + InterestCalculator.simpleInterest(1000, 5, 2));
+//System.debug('Compound Interest: ' + InterestCalculator.compoundInterest(1000, 5, 2));

@@ -1,0 +1,17 @@
+public class PrimeChecker {
+    public static Boolean isPrime(Integer num) {
+        if (num == null) {
+            throw new IllegalArgumentException('Input number cannot be null');
+        }
+        if (num <= 1) return false;
+
+        for (Integer i = 2; i <= Math.sqrt(num); i++) {
+            if (Math.mod(num, i) == 0) return false;
+        }
+        return true;
+    }
+}
+
+
+//System.debug('Is 17 Prime? ' + PrimeChecker.isPrime(17));
+//System.debug('Is 18 Prime? ' + PrimeChecker.isPrime(18));

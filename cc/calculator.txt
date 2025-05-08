@@ -1,0 +1,44 @@
+public class Calculator {
+    public static Decimal calculate(Decimal num1, Decimal num2, String op) {
+        if (op == null) throw new IllegalArgumentException('Operator cannot be null');
+        if ((num1 == null || num2 == null) && op != 'sqrt' && op != 'abs') {
+            throw new IllegalArgumentException('Operands cannot be null');
+        }
+
+        op = op.trim().toLowerCase();
+
+        switch on op {
+            when '+'      { return num1 + num2; }
+            when '-'      { return num1 - num2; }
+            when '*'      { return num1 * num2; }
+            when '/'      {
+                if (num2 == 0) throw new MathException('Division by zero');
+                return num1 / num2;
+            }
+            when '^'      {
+                Double base = (Double) num1;
+                Double exp  = (Double) num2;
+                return (Decimal) Math.pow(base, exp);
+            }
+            when 'sqrt'   {
+                if (num1 == null) throw new IllegalArgumentException('Operand cannot be null');
+                if (num1 < 0) throw new MathException('Square root of negative number');
+                return Decimal.valueOf(Math.sqrt((Double)num1));
+            }
+            when 'abs'    {
+                if (num1 == null) throw new IllegalArgumentException('Operand cannot be null');
+                return num1.abs();
+            }
+            when 'max'    { return (num1 > num2) ? num1 : num2; }
+            when 'min'    { return (num1 < num2) ? num1 : num2; }
+            when else     { throw new IllegalArgumentException('Unsupported operator: ' + op); }
+        }
+    }
+}
+
+
+//System.debug('Addition: ' + Calculator.calculate(10, 5, '+'));
+//System.debug('Power: ' + Calculator.calculate(2, 4, '^'));
+//System.debug('Square Root: ' + Calculator.calculate(49, null, 'sqrt'));
+//System.debug('Max: ' + Calculator.calculate(21, 45, 'max'));
+//System.debug('Min: ' + Calculator.calculate(2.5, 2.499, 'min'));

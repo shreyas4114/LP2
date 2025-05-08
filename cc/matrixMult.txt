@@ -1,0 +1,41 @@
+public class MatrixMultiplication {
+    public static List<List<Integer>> multiply(List<List<Integer>> m1, List<List<Integer>> m2) {
+        if (m1 == null || m2 == null) {
+            throw new IllegalArgumentException('Matrices must not be null');
+        }
+        if (m1[0].size() != m2.size()) {
+            throw new IllegalArgumentException('Invalid matrix dimensions for multiplication');
+        }
+
+        Integer rows1 = m1.size();
+        Integer cols1 = m1[0].size();
+        Integer cols2 = m2[0].size();
+
+        List<List<Integer>> result = new List<List<Integer>>();
+
+        for (Integer i = 0; i < rows1; i++) {
+            List<Integer> row = new List<Integer>();
+            for (Integer j = 0; j < cols2; j++) {
+                Integer sum = 0;
+                for (Integer k = 0; k < cols1; k++) {
+                    sum += m1[i][k] * m2[k][j];
+                }
+                row.add(sum);
+            }
+            result.add(row);
+        }
+
+        return result;
+    }
+}
+
+
+//List<List<Integer>> m1 = new List<List<Integer>>{
+//    new List<Integer>{1, 2},
+//    new List<Integer>{3, 4}
+//};
+//List<List<Integer>> m2 = new List<List<Integer>>{
+//    new List<Integer>{5, 6},
+//    new List<Integer>{7, 8}
+//};
+//System.debug('Matrix Multiplication Result: ' + MatrixMultiplication.multiply(m1, m2));

@@ -1,0 +1,29 @@
+public class CurrencyConverterSimple {
+    public static Decimal convert(String frm, String to, Decimal amount) {
+        if (amount == null || amount < 0) {
+            throw new IllegalArgumentException('Amount must be non-negative');
+        }
+
+        frm = frm.toUpperCase();
+        to = to.toUpperCase();
+
+        // Same currency, no conversion needed
+        if (frm == to) {
+            return amount;
+        }
+
+        // Fixed exchange rates
+        if (frm == 'INR' && to == 'USD') return amount * 0.012;
+        if (frm == 'INR' && to == 'EUR') return amount * 0.011;
+        if (frm == 'USD' && to == 'INR') return amount * 83;
+        if (frm == 'USD' && to == 'EUR') return amount * 0.92;
+        if (frm == 'EUR' && to == 'INR') return amount * 90;
+        if (frm == 'EUR' && to == 'USD') return amount * 1.09;
+
+        throw new IllegalArgumentException('Unsupported currency pair: ' + frm + ' to ' + to);
+    }
+}
+
+//System.debug('1000 INR to USD = ' + CurrencyConverterSimple.convert('INR', 'USD', 1000));
+//System.debug('10 USD to INR = ' + CurrencyConverterSimple.convert('USD', 'INR', 10));
+//System.debug('5 EUR to USD = ' + CurrencyConverterSimple.convert('EUR', 'USD', 5));

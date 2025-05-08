@@ -1,0 +1,14 @@
+public class ArrayAddition {
+    public static List<Integer> addArrays(List<Integer> a, List<Integer> b) {
+        List<Integer> result = new List<Integer>();
+        for (Integer i = 0; i < a.size(); i++) {
+            result.add(a[i] + b[i]);
+        }
+        return result;
+    }
+}
+
+//List<Integer> a = new List<Integer>{1, 2, 3};
+//List<Integer> b = new List<Integer>{4, 5, 6};
+//List<Integer> result = ArrayAddition.addArrays(a, b);
+//System.debug('Array Addition Result: ' + result);
